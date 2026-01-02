@@ -1,12 +1,11 @@
 import express from 'express'
-import cookieParser from 'cookie-parser'
 import uploadproduct from './model/product.js'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 dotenv.config()
 
 const postproduct = express.Router()
-postproduct.use(cookieParser())
+
 
 export default postproduct.post('/postproduct', async (req, res) => {
     try {

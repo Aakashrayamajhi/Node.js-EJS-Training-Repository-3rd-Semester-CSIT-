@@ -4,7 +4,9 @@ import signup from './signup.js'
 import login from './login.js'
 import dotenv from 'dotenv'
 import postproduct from './uploadproduct.js'
-import { fromJSON } from 'postcss'
+import getproduct from './getproduct.js'
+import cookieParser from 'cookie-parser'
+
 dotenv.config()
 
 const app = express()
@@ -14,12 +16,12 @@ dbconnection
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
 
 app.use(signup)
 app.use(login)
 app.use(postproduct)
-
-
+app.use(getproduct)
 
 app.listen(port, () => {
     console.log(`running at http://localhost:${process.env.port}`)
